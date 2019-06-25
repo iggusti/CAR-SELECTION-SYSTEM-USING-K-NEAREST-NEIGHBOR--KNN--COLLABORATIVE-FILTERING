@@ -1,1 +1,5 @@
 # RECOMMENDATIONS FOR TYPE CAR SELECTION SYSTEM USING K-NEAREST NEIGHBOR (KNN) COLLABORATIVE FILTERING (WEB BASED)
+
+Final Project
+
+A car is vehicle that is very much needed at this time. Many of the users when they want to choose a car only know some of the information they like without knowing the information of other similar cars. Car selection system recommendation is a system that can be used by users in choosing a car. By applying car selection recommendations, users will get more information about the car they want to choose and other cars that may not be known by the user at all. In the recommendation of the car selection system, the authors apply the K-Nearest Neighbor (KNN) Collaborative Filtering method based on web applications where recommendations are made based on the proximity of testing data to training data. The proximity of the data (data similarity) is used to recommend the car to the user. The final results obtained in this Final Project are to help provide car recommendations that are in accordance with the wishes of the application users and a web-based application of the Car Selection System Recommendation with the KNN method.
