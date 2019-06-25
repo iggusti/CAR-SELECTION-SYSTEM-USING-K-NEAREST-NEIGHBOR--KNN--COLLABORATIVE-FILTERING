@@ -1,0 +1,160 @@
+{% extends "menuadmin.html" %}
+{% block content %} 
+<link href="../static/css/magnific-popup.css" rel="stylesheet">
+<section class="page-header-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1>Car Data</h1>
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<div class="container"> 
+  <div class="content-wrapper">
+    <div class="inner-content">
+      <div class="row">   
+        <form role="form" method="post">
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Brand</label>
+              <input class="form-control"  name="merk" id="merk" style="font-size: 11px" >
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Type</label>
+              <input class="form-control"  name="jenis" id="jenis" style="font-size: 11px" >
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Variant</label>
+              <input class="form-control"  name="varian" id="varian" style="font-size: 11px" >
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>CC</label>
+              <input class="form-control" type="number" name="cc" id="cc" style="font-size: 11px" >
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Transmission</label>
+              <select class="form-control"  name="transmisi" id="transmisi" style="font-size: 11px" >
+                <option value="automatic">automatic</option>
+                <option value="manual">manual</option>
+              </select>
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Price</label>
+              <input class="form-control" type="number" name="harga" id="harga" style="font-size: 11px" >
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Color</label>
+              <select class="form-control"  name="warna" id="warna" style="font-size: 11px" >
+                <option value="gray">Gray</option>
+                <option value="silver">Silver</option>
+                <option value="white">White</option>
+                <option value="black">Black</option>
+              </select>
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Seater</label>
+              <input class="form-control" type="number" name="seater" id="seater" style="font-size: 11px">
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>After-Sale Price</label>
+              <input class="form-control" type="number" name="aftersale" id="aftersale" style="font-size: 11px">
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Fuel Type</label>
+              <select class="form-control"  name="fuel" id="fuel" style="font-size: 11px" >
+                <option value="1">Gasoline</option>
+                <option value="0">Diesel</option>
+              </select>
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Source</label>
+              <input class="form-control" rows="4" name="keterangan" id="keterangan" style="font-size: 11px">
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Advantages</label>
+              <input class="form-control" rows="4" name="kelebihan" id="kelebihan" style="font-size: 11px"/>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Disadvantages</label>
+              <input class="form-control" rows="4" name="kekurangan" id="kekurangan" style="font-size: 11px">
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label class=newbtn>
+                Picture
+                <br>
+                <img id="blah" src="..\static\image\kosong.png" >
+                <input id="pic" class='pis' onchange="readURL(this);" type="file" >
+              </label>
+              <input type="hidden" class="form-control"  name="image" id="image" type="hidden">
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <button type="submit" class="btn btn-sm btn-default" name="Simpan" style="font-size: 12px;">
+                <span class="glyphicon glyphicon-floppy-disk" ></span>&nbspSave</button>
+            </div>   
+          </div>
+        </form>
+      </div>
+    </div>
+  </div><!-- /.content-wrapper -->
+</div><!-- /.container -->
+<script>
+  $('.newbtn').bind("click" , function () {
+    $('#pic').click();
+  }); 
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#blah')
+        .attr('src', e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+      document.getElementById("image").value= URL.createObjectURL(event.target.files[0]);
+    }
+  }
+</script>
+<style>
+#pic{
+  display: none;
+}         
+.newbtn{
+  cursor: pointer;
+}
+#blah{
+  max-width:100px;
+  height:100px;
+  margin-top:2px;
+}
+</style>
+{% endblock %}

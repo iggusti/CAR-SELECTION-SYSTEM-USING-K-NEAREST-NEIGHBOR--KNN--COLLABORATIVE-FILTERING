@@ -1,0 +1,73 @@
+{% extends "menuadmin.html" %}
+{% block content %}
+<link href="../static/css/magnific-popup.css" rel="stylesheet">
+<script>
+  function show(){
+  document.getElementById("passbaru").style.display = 'block';
+  
+  }
+  function hide(){
+  document.getElementById("passbaru").style.display = 'none';
+  }
+</script>
+<section class="page-header-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1>User Data</h1>
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<div class="container"> 
+  <div class="content-wrapper">
+    <div class="inner-content">
+      <div class="row">
+        <div class="table-responsive">
+          <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Monthly Salary</th>
+                <th>Job</th>
+                <th>Budget</th>
+                <th>Delete / Edit</th>
+              </tr>
+            </thead>           
+            <tbody>
+              {% for i in post %}
+              <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+                <td>{{i[3]}}</td>  
+                <td>{{i[4]}}</td>
+                <td>{{i[5]}}</td>
+                <td>{{i[6]}}</td>
+                <td>{{i[7]}}</td>
+                <td><a href="/ModalUser/{{i[0]}}" data-target="#Modal" data-toggle="modal" id="Detail" name="Detail" Value="{{i[0]}}" data-backdrop="static" data-keyboard="false">Edit / Delete</a></td>
+              </tr>
+              {% endfor %}       
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.content-wrapper -->
+</div><!-- /.container -->
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- /.modal-content -->
+    </div>
+  </div>
+</div>
+
+{% endblock %}

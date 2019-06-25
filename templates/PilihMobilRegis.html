@@ -1,0 +1,308 @@
+{% extends "main.html" %}
+{% block content %}
+<!-- magnific-popup -->
+<link href="../static/css/ratingstar.css" rel="stylesheet">
+<script src="../static/vendor/jquery/jquery.min.js"></script>
+<script src="../static/vendor/jquery/jquery-1.11.1.min.js"></script>
+
+<link href="../static/css/list.css" rel="stylesheet">
+<link href="../static/css/magnific-popup.css" rel="stylesheet">
+
+<section class="page-header-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1>Welcome!</h1>
+          <ol class="breadcrumb">
+            <li>
+              <p style="color: white">To get started, tell CARI about your preferences by distributing <b>3</b> rate or more of your favourite cars below. Click <b>Home</b> if you are finished</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<div class="container"> 
+  <div class="content-wrapper">     
+    <div class="inner-content"> 
+      <div class="row">
+        <div class="col-xs-12 col-md-9 col-sm-8">
+          <h4><b>Cars rated: {{jml}}</b></h4>
+          <ul class="list-inline" id="filter">
+            <li><a class="active" data-group="all">All</a></li>
+            {% for i in kirim[0] %}    
+            <li><a data-group="{{i[0]}}">{{i[0]}}</a></li>
+            {% endfor %}
+          </ul>
+        </div><!-- /.col-md-9 -->
+        <!-- 
+        <div class="col-xs-12 col-md-3 col-sm-4">
+          <div class="sidebar-wrapper">
+            <aside class="widget widget_search">
+              <label class="sr-only">Search</label>
+              <input type="search" class="form-control" placeholder="Search" value="" id="jenis" name="jenis" title="Search">
+            </aside>
+          </div>
+        </div>
+        --> 
+      </div>
+      <div class="row">
+        <div class="row four-column">
+          <div id="grid">
+            {% for i in post %} 
+            <div class="portfolio-item col-sm-6 col-md-3" data-groups='["all", "{{i[1]}}","{{i[2]}}"]'>
+              <div class="single-portfolio">
+                <img src="{{i[12]}}" alt="">
+                <div class="portfolio-links">
+                  <a class="image-link" href="{{i[12]}}"><i class="fa fa-search-plus"></i></a>
+                  <a href="/ModalPilihMobilRegis/{{i[0]}}" data-target="#Modal" data-toggle="modal" id="Detail" name="Detail" Value="{{i[0]}}" data-backdrop="static" data-keyboard="false"><i class="fa fa-link"></i></a>
+                </div><!-- /.links -->
+                <center><strong>{{i[2]}} {{i[3]}}</strong></center>
+              </div><!-- /.single-portfolio -->
+            </div><!-- /.portfolio-item -->
+            {% endfor %}
+          </div><!-- /#grid -->
+        </div><!-- /.row -->  
+      </div>  
+    </div>
+  </div><!-- /.content-wrapper -->
+</div><!-- /.container -->
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- /.modal-content -->
+    </div>
+  </div>
+</div>
+<script>
+  $('.newbtn').bind("click" , function () {
+    $('#pic').click();
+  });
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#blah')
+        .attr('src', e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+      document.getElementById("image").value= URL.createObjectURL(event.target.files[0]);
+    }
+  }
+
+  var jenis = [{% for i in kirim2[1] %}'{{i[0]}}',{% endfor %}];
+
+  function autocomplete1(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    
+    inp.addEventListener("focusin", function(e) {
+      var a, b, i, val = this.value;
+      if (val.length == 0){
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list1");
+        a.setAttribute("class", "autocomplete-items1");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+            /*insert the value for the autocomplete text field:*/
+            inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+              });
+          a.appendChild(b);
+        }
+      }
+    });
+    inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      if (val.length == 0){
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list1");
+        a.setAttribute("class", "autocomplete-items1");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+            /*insert the value for the autocomplete text field:*/
+            inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+              });
+          a.appendChild(b);
+        }
+      }
+      else{
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list1");
+        a.setAttribute("class", "autocomplete-items1");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+              });
+            a.appendChild(b);
+          }
+        }
+      }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list1");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+      });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active1");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active1");
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items1");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+    });
+  }
+
+  autocomplete1(document.getElementById("jenis"), jenis);
+
+</script>
+
+<script>
+        function INPUT2() 
+        {
+          var jss = '{"serial":"'+  document.getElementById("SR").value  +'","kode":"'+ kdd +'","kcabang":"{{session['cabang']}}","token":"{{session['user']}}"}'
+          var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": "/cekserial",
+              "method": "POST",
+              "headers": {
+                "content-type": "application/json",
+              },
+              "processData": false,
+              "data": jss
+            }
+
+            $.ajax(settings).done(function (response) {
+                    var has = JSON.parse(response)
+                    if ( has[0].STATUS != 1 ) {
+                        $(document).ready(function(){
+                        $("#myModal").modal("show");
+                        });
+                        document.getElementById("cmdl").click()
+                        return false;
+                    }
+                });
+                  document.getElementById("cmdl").click()
+        }
+    </script>
+
+<style>
+#pic{
+  display: none;
+}         
+.newbtn{
+  cursor: pointer;
+}
+#blah{
+  max-width:100px;
+  height:100px;
+  margin-top:2px;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,120 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" id="CloseModal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel"> ID No. {{kode}}</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <form role="form" method="post">
+          <div class="col-md-7">
+            <div class="form-group">
+              <input type ="hidden" class="form-control"  name="kodemob" id="kodemob" Value = "{{post[0][0]}}" style="font-size: 11px" >
+              <label>Brand</label>
+              <input class="form-control"  name="merk" id="merk" Value = "{{post[0][1]}}" style="font-size: 11px" >
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Type</label>
+              <input class="form-control"  name="jenis" id="jenis" Value = "{{post[0][2]}}" style="font-size: 11px" >
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Variant</label>
+              <input class="form-control"  name="varian" id="varian" Value = "{{post[0][3]}}" style="font-size: 11px" >
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>CC</label>
+              <input class="form-control" type="number"  name="cc" id="cc" Value = "{{post[0][4]}}" style="font-size: 11px" >
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Transmission</label>
+              <select class="form-control"  name="transmisi" id="transmisi" style="font-size: 11px" >
+                <option value="automatic" {% if post[0][5] == 'Automatic' %}selected{% endif %}>Automatic</option>
+                <option value="manual" {% if post[0][5] == 'Manual' %}selected{% endif %}>Manual</option>
+              </select>
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Price</label>
+              <input class="form-control" type="number" name="harga" id="harga" Value = "{{post[0][6]}}" style="font-size: 11px" >
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>warna</label>
+              <select class="form-control"  name="warna" id="warna" style="font-size: 11px" >
+                <option value="gray" {% if post[0][7] == 'Gray' %}selected{% endif %}>Gray</option>
+                <option value="silver" {% if post[0][7] == 'Silver' %}selected{% endif %}>Silver</option>
+                <option value="white" {% if post[0][7] == 'White' %}selected{% endif %}>White</option>
+                <option value="black" {% if post[0][7] == 'Black' %}selected{% endif %}>Black</option>
+              </select>
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Seater</label>
+              <input class="form-control" type="number" name="seater" id="seater" Value = "{{post[0][13]}}" style="font-size: 11px">
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>After-Sale Price</label>
+              <input class="form-control" type="number" name="aftersale" id="aftersale" Value = "{{post[0][14]}}" style="font-size: 11px">
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Fuel Type</label>
+              <select class="form-control"  name="fuel" id="fuel" style="font-size: 11px" >
+                <option value="1" {% if post[0][15] == 1 %}selected{% endif %}>Gasoline</option>
+                <option value="0" {% if post[0][15] == 0 %}selected{% endif %}>Diesel</option>
+              </select>
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Source</label>
+              <input class="form-control" rows="4" name="keterangan" id="keterangan" Value = "{{post[0][8]}}" style="font-size: 11px">
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Advantages</label>
+              <input class="form-control" rows="4" name="kelebihan" id="kelebihan" Value = "{{post[0][9]}}" style="font-size: 11px"/>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label>Disadvantages</label>
+              <input class="form-control" rows="4" name="kekurangan" id="kekurangan" Value = "{{post[0][10]}}" style="font-size: 11px">
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label class=newbtn>
+                Picture
+                <br>
+                <img id="blah" src="{{post[0][12]}}" >
+                <input id="pic" class='pis' onchange="readURL(this);" type="file" >
+              </label>
+              <input type="hidden" class="form-control"  name="image" id="image" type="hidden">
+            </div>                                                 
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <button type="submit" class="btn btn-sm btn-default" name="Simpan" value="Simpan" > <span class="glyphicon glyphicon-floppy-disk" ></span>&nbspSave</button>
+              <button type="submit" class="btn btn-sm btn-default" name="Simpan" value="Hapus" > <span class="glyphicon glyphicon-floppy-disk" ></span>Delete</button>
+            </div>   
+          </div>
+        </form>
+    </div> <!-- /.row -->
+</div>
+<div class="modal-footer">
+</div>
+

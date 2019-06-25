@@ -1,0 +1,32 @@
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative; display: inline-block;
+}
+.autocomplete-items, .autocomplete-items1, .autocomplete-items2, .autocomplete-items3,.autocomplete-items4, .autocomplete-items5, .autocomplete-items6, .autocomplete-items7, .autocomplete-items8 {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 1;
+  /*position the autocomplete items to be the same width as the container:*/
+  left:100%;
+  top:0px;
+}
+
+.autocomplete-items div, .autocomplete-items1 div, .autocomplete-items2 div, .autocomplete-items3 div,.autocomplete-items4 div, .autocomplete-items5 div, .autocomplete-items6 div, .autocomplete-items7 div, .autocomplete-items8 div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+.autocomplete-items div:hover, .autocomplete-items1 div:hover, .autocomplete-items2 div:hover, .autocomplete-items3 div:hover, .autocomplete-items4 div:hover, .autocomplete-items5 div:hover, .autocomplete-items6 div:hover, .autocomplete-items7 div:hover, .autocomplete-items8 div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9; 
+}
+
+.autocomplete-active, .autocomplete-active1, .autocomplete-active2, .autocomplete-active3, .autocomplete-active4, .autocomplete-active5, .autocomplete-active6, .autocomplete-active7, .autocomplete-active8 {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}

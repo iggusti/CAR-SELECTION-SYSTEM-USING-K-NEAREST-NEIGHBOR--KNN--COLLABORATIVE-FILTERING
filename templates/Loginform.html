@@ -1,0 +1,166 @@
+<html>
+<head>
+  <title>C A R I &nbsp;| Login</title>
+  <link href="../static/css/login.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap/css/bootstrap.minlogin.css" rel="stylesheet">
+  <link rel="icon" type=”image/png” href="../static/img/iconcari.ico">
+  <script src="../static/vendor/bootstrap/js/bootstrap.minlogin.js" rel="stylesheet"></script>
+  <script src="../static/vendor/jquery/jquery.minlogin.js"></script>
+  <script src="../static/js/bootstrapreg.min.js"></script>
+
+    <!------ Include the above in your HEAD tag
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <link href="../static/css/bootstrapreg.min.css" rel="stylesheet" >
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    
+    ---------->
+  </head>
+  <body>
+    <section class="login-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 login-sec">
+            <h2 class="text-center">Login</h2>
+            <form class="login-form"  role="form" method="post">
+              <div class="form-group">
+                <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+                <input id="username" type="text" class="form-control" name="username" placeholder="Username">         
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+              </div>
+              <div class="form-check">
+                <button type="submit" class="btn btn-login float-right" name="Simpan" id="Simpan" value="login">Login</button>
+              </div>
+            </form>
+            <div class="copy-text">Register Account ? <i class="fa fa-fw fa-sign-up"> 
+              <a href="" data-toggle="modal" data-target="#myModal">Sign up</a></i>
+            </div>
+          </div>
+          <div class="col-md-8 banner-sec">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              </ol>
+              <div class="carousel-inner" role="listbox">
+                <div style="text-align:center; margin-top: 15px;" class="carousel-item active">
+                  <img src="static/img/carinfo.png" width="900" height="370" alt="First slide">
+                  <div class="carousel-caption d-none d-md-block">
+                    <div class="banner-text">
+                      {% block content %}{% endblock %}                  
+                    </div>  
+                  </div>
+                </div>
+              </div>           
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create your <b>CARI</b> Account</h4>
+              </div>
+              <div class="modal-body">
+                <form role="form" method="post" >   
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input class="form-control" placeholder="Username" name="nama" id="nama" required style="font-size: 11px" >
+                    </div>              
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input class="form-control" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" name="passworddaftar" id="passworddaftar" required style="font-size: 11px">
+                    </div>    
+                    <div class="form-group">
+                      <label>Confirm Password</label>                      
+                      <input class="form-control" type="password" placeholder="Confirm Password" id="confirm_password" required style="font-size: 11px">
+                    </div>                        
+                    <div class="form-group">
+                      <label>Sex</label>
+                      <select class="form-control" name="jk" id="jk" required style="font-size: 11px" >
+                        <option value="" disabled selected hidden>-- Select your option --</option>
+                        <option value="Laki-laki">Male</option>
+                        <option value="Perempuan">Female</option>
+                      </select>
+                    </div>                    
+                    <div class="form-group">
+                      <label>Age</label>
+                      <select class="form-control"  name="usia" id="usia" required style="font-size: 11px" >
+                        <option value="" disabled selected hidden>-- Select your option --</option>
+                        <option value="19 - 30 tahun">19 - 30 years old</option>
+                        <option value="31 - 40 tahun">31 - 40 years old</option>
+                        <option value="41 - 50 tahun">41 - 50 years old</option>
+                        <option value="51 - 60 tahun">51 - 60 years old</option>
+                        <option value="lebih dari 60 tahun">>60 years old</option>
+                      </select>
+                    </div>                     
+                    <div class="form-group">
+                      <label>Monthly Salary</label>
+                      <select class="form-control"  name="pendapatan" id="pendapatan" required style="font-size: 11px" >
+                        <option value="" disabled selected hidden>-- Select your option --</option>
+                        <option value="Kurang dari Rp.8 juta">Less than Rp 8 Mil</option>
+                        <option value="Antara Rp.8 juta hingga Rp.15 juta">Between Rp 8 Mil until Rp 15 Mil</option>
+                        <option value="Lebih dari Rp.8 juta">More than Rp 15 Mil</option>
+                      </select>
+                    </div>                  
+                    <div class="form-group">
+                      <label>Job</label>
+                      <select class="form-control"  name="pekerjaan" id="pekerjaan" required style="font-size: 11px" >
+                        <option value="" disabled selected hidden>-- Select your option --</option>
+                        <option value="Pelajar">Student</option>
+                        <option value="Wiraswasta">Enterpreneur</option>
+                        <option value="Pegawai Negeri Sipil">Civil Servant</option>
+                        <option value="Pegawai Swasta">Private Civil Servants</option>
+                        <option value="Professional">Professional</option>
+                      </select>
+                    </div>                    
+                    <div class="form-group">
+                      <label>Budget</label>
+                      <select class="form-control"  name="anggaran" id="anggaran" required style="font-size: 11px" >
+                        <option value="" disabled selected hidden>-- Select your option --</option>
+                        <option value="Kurang dari Rp.200 juta">0 - 200,000,000.00</option>
+                        <option value="Rp.200 juta - Rp.400 juta">200,000,000.00 - 400,000,000.00</option>
+                        <option value="Rp.400 juta - Rp.600 juta (tepat Rp.400 juta tidak termasuk)">400,00,000.00 - 600,000,000.00</option>
+                        <option value="Rp.600 juta - Rp.800 juta (tepat Rp.600 juta pas tidak termasuk)">600,000,000.00 - 800,000,000.00</option>
+                        <option value="Lebih dari Rp.800 juta">>800,000,000.00</option>
+                      </select>
+                    </div>                    
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-login float-right" name="Simpan" id="Simpan" value="simpan">
+                        Next
+                      </button>
+                    </div>   
+                </form>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <center> <h5 style="margin-top:90px; color: grey">Aplikasi TA Rekomendasi Mobil menggunakan Metode User Based, Item Based, & KNN Collaborative Filtering</h5> </center>
+    </section>
+<script>
+  var passworddaftar = document.getElementById("passworddaftar")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(passworddaftar.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Password Isn't Same");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+passworddaftar.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+  </body>
+  </html>

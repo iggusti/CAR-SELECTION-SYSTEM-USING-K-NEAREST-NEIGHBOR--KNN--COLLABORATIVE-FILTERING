@@ -1,0 +1,74 @@
+{% extends "main.html" %}
+{% block content %}
+<link href="../static/css/ratingstar.css" rel="stylesheet">
+<script src="../static/vendor/jquery/jquery.min.js"></script>
+<script src="../static/js/ratingstar.js"></script>
+<script src="../static/vendor/jquery/jquery-1.11.1.min.js"></script>
+<section class="page-header-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1>Car Details</h1>
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<div class="container">
+  <div class="content-wrapper">  
+    <div class="inner-content">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="portfolio-content">
+            <img src="../{{post[0][12]}}" class="img-responsive" alt="">
+            <div class="project-live-link">
+                <p><span class="title"><strong>Your Rating : <a>{{"{:,.2f}".format(rat)}}</a></strong></span></p>
+                <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value='{{"{:,.2f}".format(rat)}}'>     
+                <br>
+                <a href="/rating/{{post[0][0]}}" class="btn btn-default btn-xs" type="button">Rating</a>
+            </div> <!-- /.project-live-link -->
+            <p><strong>Advantages : </strong><pre>{{post[0][9]}}</pre><strong>Disadvantages : </strong><pre>{{post[0][10]}}</pre><strong><a href ="{{post[0][8]}}" target="_blank" class="btn btn-primary btn-lg btn-block" type="button">More Info</a></strong></p>         
+          </div> <!-- /.portfolio-content -->
+        </div> <!-- /.col-md-7 -->
+        <div class="col-md-5">
+          <div class="portfolio-info">
+            <p><span class="title">Brand : </span> {{post[0][1]}}</p>
+            <p><span class="title">Type : </span> {{post[0][2]}}</p>
+            <p><span class="title">Variant : </span> {{post[0][3]}} </p>
+            <p><span class="title">CC : </span> {{post[0][4]}} </p>
+            <p><span class="title">Transmission : </span> {{post[0][5]}} </p>
+            <p><span class="title">Price : </span> Rp. {{"{:,.2f}".format(post[0][6])}}</p>
+            <p><span class="title">Color : </span> {{post[0][7]}} </p> 
+            <p><span class="title">Seater : </span> {{post[0][13]}} </p>
+            <p><span class="title">After-Sale Price : </span> Rp. {{"{:,.2f}".format(post[0][14])}}</p>
+            <p><span class="title">Fuel : </span> {% if post[0][15] == 0 %} Diesel {% endif %}{% if post[0][15] == 1 %} Gasoline {% endif %} </p>        
+            <div class="project-live-link">
+                <p><span class="title"><strong>Rating All: <a> {{"{:,.2f}".format(post[0][11])}}</a></strong></span></p>
+                <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value='{{"{:,.2f}".format(post[0][11])}}'>
+            </div> <!-- /.project-live-link -->
+          </div> <!-- /.portfolio-info -->
+        </div> <!-- /.col-md-5 -->
+      </div> <!-- /.row -->
+      <br>
+      <hr>
+      <div class="related-project">
+        <h2>Similar Car by KNN Method</h2>
+        <div class="related-work-carousel">
+          {% for i in relatedpost %} 
+            <div class="item">
+              <div class="single-portfolio">
+                <img src="../{{i[12]}}" alt="">
+                <div class="portfolio-links">
+                  <center><a href="/listallmobilusersinggle/{{i[0]}}"><i class="fa fa-link"></i></a></center>
+                </div><!-- /.links -->
+                <center><strong>{{i[1]}} {{i[2]}} {{i[3]}} {{i[4]}} {{i[5]}} {{i[7]}}</strong></center>
+              </div><!-- /.single-portfolio -->
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div><!-- /.inner-content -->
+  </div><!-- /.content-wrapper -->
+</div><!-- /.container -->
+{% endblock %}

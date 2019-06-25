@@ -1,0 +1,101 @@
+{% extends "main.html" %}
+{% block content %} 
+<link href="../static/css/magnific-popup.css" rel="stylesheet">
+<section class="page-header-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h1>Register</h1>
+				</div>
+			</div>
+		</div><!-- /.row -->
+	</div><!-- /.container-fluid -->
+</section>
+<div class="container">
+	<div class="content-wrapper">  
+		<div class="our-clients-wrapper">
+			<div class="media">
+				<div class="media-body">
+					<form role="form" method="post" >   
+						<div class="col-md-7">
+							<div class="form-group">
+								<label>Username</label>
+								<input class="form-control"  name="nama" id="nama" style="font-size: 11px" >
+							</div>                                                 
+						</div>
+						<div class="col-md-7">
+							<div class="form-group">
+								<label>Password</label>
+								<input class="form-control"  name="password" id="password" style="font-size: 11px" >
+							</div>                                                 
+						</div>
+						<div class="col-md-7">
+							<div class="form-group">
+								<label>Sex</label>
+								<select class="form-control" name="jk" id="jk" style="font-size: 11px" >
+									<option value="Laki-laki">Male</option>
+									<option value="Perempuan">Female</option>
+								</select>
+							</div>                                           
+						</div>
+						<div class="col-md-7">
+							<div class="form-group">
+								<label>Age</label>
+								<select class="form-control"  name="usia" id="usia" style="font-size: 11px" >
+									<option value="19 - 30 tahun">19 - 30 years old</option>
+									<option value="31 - 40 tahun">31 - 40 years old</option>
+									<option value="41 - 50 tahun">41 - 50 years old</option>
+									<option value="51 - 60 tahun">51 - 60 years old</option>
+									<option value="lebih dari 60 tahun">>60 years old</option>
+								</select>
+							</div>                                                 
+						</div>
+						<div class="col-md-7">
+							<div class="form-group">
+								<label>Monthly Salary</label>
+								<select class="form-control"  name="pendapatan" id="pendapatan" style="font-size: 11px" >
+									<option value="Kurang dari Rp.8 juta">Less than Rp 8 Mil</option>
+									<option value="Antara Rp.8 juta hingga Rp.15 juta">Between Rp 8 Mil until Rp 15 Mil</option>
+									<option value="Lebih dari Rp.15 juta">More than Rp 15 Mil</option>
+								</select>
+							</div>                                             
+						</div>
+						<div class="col-md-7">
+							<div class="form-group">
+								<label>Job</label>
+								<select class="form-control"  name="pekerjaan" id="pekerjaan" style="font-size: 11px" >
+									<option value="Pelajar">Student</option>
+									<option value="Wiraswasta">Enterpreneur</option>
+									<option value="Pegawai Negeri Sipil">Civil Servant</option>
+									<option value="Pegawai Swasta">Private Civil Servants</option>
+									<option value="Professional">Professional</option>
+								</select>
+							</div>                                                 
+						</div>
+						<div class="col-md-7">
+							<div class="form-group">
+								<label>Budget</label>
+								<select class="form-control"  name="anggaran" id="anggaran" style="font-size: 11px" >
+									<option value="Kurang dari Rp.200 juta">0 - 200,000,000.00</option>
+									<option value="Rp.200 juta - Rp.400 juta">200,000,000.00 - 400,000,000.00</option>
+									<option value="Rp.400 juta - Rp.600 juta (tepat Rp.400 juta tidak termasuk)">400,00,000.00 - 600,000,000.00</option>
+									<option value="Rp.600 juta - Rp.800 juta (tepat Rp.600 juta pas tidak termasuk)">600,000,000.00 - 800,000,000.00</option>
+									<option value="Lebih dari Rp.800 juta">>800,000,000.00</option>
+								</select>
+							</div>                                                 
+						</div>    
+						<div class="col-md-7">
+							<div class="form-group">
+								<button type="submit" class="btn btn-sm btn-default" name="Simpan">
+									Save
+								</button>
+							</div>   
+						</div>
+					</form>
+				</div>
+			</div>
+		</div><!-- /.inner-content -->
+	</div><!-- /.content-wrapper -->
+</div><!-- /.container -->
+{% endblock %}

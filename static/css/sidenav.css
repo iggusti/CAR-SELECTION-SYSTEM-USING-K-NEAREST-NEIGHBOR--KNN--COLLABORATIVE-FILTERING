@@ -1,0 +1,31 @@
+.sidenavcari {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 10%;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+.sidenavcari .closebtn {
+    position: static;
+    top: 0;
+    right:0;
+    font-size: 25px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 100%) {
+  .sidenavcari {padding-top: 15px;}
+  .sidenavcari a {font-size: 18px;}
+}

@@ -1,0 +1,96 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" id="CloseModal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel"> ID No. {{kode}}</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <form role="form" method="post">
+            <div class="col-md-7">
+              <div class="form-group">
+                <label>Username</label>
+                <input type ="hidden"  class="form-control"  name="kodeuser" id="kodeuser" style="font-size: 11px" value = "{{post[0][0]}}"  Readonly >
+                <input class="form-control"  name="nama" id="nama" style="font-size: 11px" value = "{{post[0][1]}}"  Readonly >
+              </div>                                                 
+            </div>
+            <div class="col-md-7">
+              <div class="form-group">
+                <label>Password</label>
+                <input class="form-control"  name="password" id="password" style="font-size: 11px" value = "{{post[0][2]}}" Readonly><br>
+                <button onclick="show()" type="button" class="btn btn-sm btn-default" name="ganti" id="ganti" >Change Password</button>
+              </div>                                                 
+            </div>
+            <div id="passbaru" name="passbaru" class="col-md-7" style="display:none;">
+              <div class="form-group">
+                <label>New Password</label>
+                <input class="form-control"  name="passwordbaru" id="passwordbaru" style="font-size: 11px"><br>
+                <button type="submit" class="btn btn-sm btn-default" name="Simpan" id = "SimpanPass" value="SimpanPass" > <span class="glyphicon glyphicon-floppy-disk" ></span>Simpan Password</button>
+                <button onclick="hide()" type="button" class="btn btn-sm btn-default" name="batalganti" id="batalganti">Cancel</button>
+              </div>                                                 
+            </div>
+            <div class="col-md-7">
+              <div class="form-group">
+                <label>Sex</label>
+                <select class="form-control" name="jk" id="jk" style="font-size: 11px" >
+                  <option value="Laki-laki" {% if post[0][4] == 'Laki-laki' %}selected{% endif %}>Male</option>
+                  <option value="Perempuan" {% if post[0][4] == 'Perempuan' %}selected{% endif %}>Female</option>
+                </select>
+              </div>                                           
+            </div>
+            <div class="col-md-7">
+              <div class="form-group">
+                <label>Age</label>
+                <select class="form-control"  name="usia" id="usia" style="font-size: 11px" >
+                  <option value="19 - 30 tahun" {% if post[0][3] == '19 - 30 tahun' %}selected{% endif %}>16 - 18 years old</option>
+                  <option value="31 - 40 tahun" {% if post[0][3] == '31 - 40 tahun' %}selected{% endif %}>19 - 36 years old</option>
+                  <option value="41 - 50 tahun" {% if post[0][3] == '41 - 50 tahun' %}selected{% endif %}>37 - 48 years old/option>
+                  <option value="51 - 60 tahun" {% if post[0][3] == '51 - 60 tahun' %}selected{% endif %}>49 - 67 years old</option>
+                  <option value="lebih dari 60 tahun" {% if post[0][3] == 'lebih dari 60 tahun' %}selected{% endif %}>>67 years old</option>
+                </select>
+              </div>                                                 
+            </div>
+            <div class="col-md-7">
+              <div class="form-group">
+                <label>Monthly Salary</label>
+                <select class="form-control"  name="pendapatan" id="pendapatan" style="font-size: 11px" >
+                  <option value="Kurang dari Rp.8 juta" {% if post[0][5] == 'Kurang dari Rp.8 juta' %}selected{% endif %}>Less than Rp 2,6 Mil</option>
+                  <option value="Antara Rp.8 juta hingga Rp.15 juta" {% if post[0][5] == 'Antara Rp.8 juta hingga Rp.15 juta' %}selected{% endif %}>Between Rp 2,6 juta hingga Rp 6 Mil</option>
+                  <option value="Lebih dari Rp.15 juta" {% if post[0][5] == 'Lebih dari Rp.15 juta' %}selected{% endif %}>More than Rp 6 Mil</option>
+                </select>
+              </div>                                             
+            </div>
+            <div class="col-md-7">
+              <div class="form-group">
+                <label>Job</label>
+                <select class="form-control"  name="pekerjaan" id="pekerjaan" style="font-size: 11px" >
+                  <option value="Pelajar" {% if post[0][6] == 'Pelajar' %}selected{% endif %}>Student</option>
+                  <option value="Wiraswasta" {% if post[0][6] == 'Wiraswasta' %}selected{% endif %}>Enterpreneur</option>
+                  <option value="Pegawai Negeri Sipil" {% if post[0][6] == 'Pegawai Negeri Sipil' %}selected{% endif %}>Government Employees</option>
+                  <option value="Pegawai Swasta" {% if post[0][6] == 'Pegawai Swasta' %}selected{% endif %}>
+                  Private Civil Servants</option>
+                  <option value="Professional" {% if post[0][6] == 'Professional' %}selected{% endif %}>Profesional</option>
+                </select>
+              </div>                                                 
+            </div>
+            <div class="col-md-7">
+              <div class="form-group">
+                <label>Budget</label>
+                <select class="form-control"  name="anggaran" id="anggaran" style="font-size: 11px" >
+                  <option value="Kurang dari Rp.200 juta" {% if post[0][7] == 'Kurang dari Rp.200 juta' %}selected{% endif %}>0 - 200,000,000.00</option>
+                  <option value="Rp.200 juta - Rp.400 juta" {% if post[0][7] == 'Rp.200 juta - Rp.400 juta' %}selected{% endif %}>200,000,000.00 - 400,000,000.00</option>
+                  <option value="Rp.400 juta - Rp.600 juta (tepat Rp.400 juta tidak termasuk)" {% if post[0][7] == 'Rp.400 juta - Rp.600 juta (tepat Rp.400 juta tidak termasuk)' %}selected{% endif %} >400,00,000.00 - 600,000,000.00</option>
+                  <option value="Rp.600 juta - Rp.800 juta (tepat Rp.600 juta pas tidak termasuk)" {% if post[0][7] == 'Rp.600 juta - Rp.800 juta (tepat Rp.600 juta pas tidak termasuk)' %}selected{% endif %} >600,000,000.00 - 800,000,000.00</option>
+                  <option value="Lebih dari Rp.800 juta" {% if post[0][7] == 'Lebih dari Rp.800 juta' %}selected{% endif %}>>800,000,000.00</option>
+                </select>
+              </div>                                                 
+            </div>
+            <div class="col-md-7">
+              <div class="form-group">
+                <button type="submit" class="btn btn-sm btn-default" name="Simpan" value="Simpan" > <span class="glyphicon glyphicon-floppy-disk" ></span>&nbspSave</button>
+                <button type="submit" class="btn btn-sm btn-default" name="Simpan" value="Hapus" > <span class="glyphicon glyphicon-floppy-disk" ></span>Delete</button>
+              </div>   
+            </div>
+        </form>  
+    </div> <!-- /.row -->
+</div>
+<div class="modal-footer">
+</div>

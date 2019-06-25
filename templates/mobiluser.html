@@ -1,0 +1,71 @@
+{% extends "main.html" %}
+{% block content %}
+<section class="page-header-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1>Car list</h1>
+        </div>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<div class="container">
+  <div class="content-wrapper">  
+    <div class="our-clients-wrapper">
+      {% for i in post %}          
+      <div class="media">
+        <div class="media-left">
+          <a href="#">
+            <img class="media-object" src="{{i[12]}}" alt="">
+          </a>
+        </div>
+        <div class="media-body">
+          <span>{{i[1]}} {{i[2]}} {{i[3]}} {{i[4]}} {{i[7]}}</span>
+          Transmission : {{i[5]}} <br>
+          Price : {{"{:,.2f}".format(i[6])}} <br>
+          Seater : {{i[8]}} <br>
+          After-Sale Price : {{"{:,.2f}".format(i[8])}} <br>
+          Fuel : {% if i[15] == 0 %} Diesel {% endif %}{% if i[15] == 1 %} Gasoline {% endif %} <br>
+          Source : {{i[8]}} <br>
+          Advantages : {{i[9]}} <br>
+          Disadvantages : {{i[10]}} <br>
+          Rating : {{i[11]}} <br>
+          <a href="/rating/{{i[0]}}" class="btn btn-default btn-xs" type="button" id ="newbtn" name="id ="newbtn"" >Rating</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div><!-- /.content-wrapper -->
+</div><!-- /.container -->    
+<script>
+  $('.newbtn').bind("click" , function () {
+    $('#pic').click();
+  }); 
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#blah')
+        .attr('src', e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
+      document.getElementById("image").value= URL.createObjectURL(event.target.files[0]);
+    }
+  }
+</script>
+<style>
+#pic{
+  display: none;
+}         
+.newbtn{
+  cursor: pointer;
+}
+#blah{
+  max-width:100px;
+  height:100px;
+  margin-top:2px;
+}
+</style>  
+{% endblock %}
